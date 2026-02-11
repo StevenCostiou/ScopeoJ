@@ -1,6 +1,7 @@
 package scopeo.capture;
 
 import org.aspectj.lang.JoinPoint;
+import scopeo.model.ScpMethod;
 import scopeo.model.ScpObject;
 import scopeo.model.ScpTrace;
 
@@ -8,15 +9,16 @@ import scopeo.model.ScpTrace;
 
 public class ScpJoinPointCapture {
 
-
-    public void captureCallBefore(JoinPoint callPoint) {
+    public ScpTrace captureCallBefore(JoinPoint callPoint) {
         ScpTrace trace = new ScpTrace();
-        trace.setTraceIndex(ScpGlobalTraceIndex.getInstance().newTraceIndex());
         trace.setReceiver(new ScpObject(callPoint.getTarget()));
         trace.setSender(new ScpObject(callPoint.getThis()));
+        trace.setMethod(new ScpMethod(callPoint));
+        ScpGlobalTraceRecord.getInstance().addTrace(trace);
+        return trace;
+    }
 
-        callPoint.getSourceLocation();
-
-
+    public void captureReturnValue(Object returnValue) {
+        ScpGlobalTraceRecord.getInstance().getLastTrace().setResult(new ScpObject(returnValue));
     }
 }

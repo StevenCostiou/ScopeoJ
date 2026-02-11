@@ -26,6 +26,8 @@ public class ScpObject {
             this.setObjectID(target.hashCode());
         } catch (NullPointerException e) {
             this.setClassName("null");
+        } catch (java.lang.Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 }
