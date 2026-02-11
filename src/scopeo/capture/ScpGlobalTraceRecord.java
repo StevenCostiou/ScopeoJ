@@ -19,14 +19,9 @@ public class ScpGlobalTraceRecord {
         return INSTANCE;
     }
 
-    private ScpTrace lastTrace;
     private Stack<ScpTrace> stackTrace = new Stack<>();
     private ArrayList<ScpTrace> traces = new ArrayList<>();
     private int traceIndex = 0;
-
-    public ScpTrace getLastTrace() {
-        return lastTrace;
-    }
 
     public void terminateLastCallTraceWithReturnedValue(ScpObject returnValue) {
         stackTrace.pop().setResult(returnValue);

@@ -1,8 +1,5 @@
 package scopeo.model;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-
 public class ScpTrace {
     public int traceIndex;
     public ScpObject receiver;
@@ -49,8 +46,4 @@ public class ScpTrace {
     public void setMethod(ScpMethod method) {
         this.method = method;
     }
-
-
-
-
 }
