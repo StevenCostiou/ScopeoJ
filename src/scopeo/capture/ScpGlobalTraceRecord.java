@@ -1,8 +1,10 @@
 package scopeo.capture;
 
+import scopeo.model.ScpObject;
 import scopeo.model.ScpTrace;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class ScpGlobalTraceRecord {
     private static ScpGlobalTraceRecord INSTANCE;
@@ -18,6 +20,7 @@ public class ScpGlobalTraceRecord {
     }
 
     private ScpTrace lastTrace;
+    private Stack<ScpTrace> stackTrace = new Stack<>();
     private ArrayList<ScpTrace> traces = new ArrayList<>();
     private int traceIndex = 0;
 
@@ -25,9 +28,14 @@ public class ScpGlobalTraceRecord {
         return lastTrace;
     }
 
-    public void addTrace(ScpTrace newTrace) {
+    public void terminateLastCallTraceWithReturnedValue(ScpObject returnValue) {
+        stackTrace.pop().setResult(returnValue);
+    }
+
+    public void addCallTrace(ScpTrace newTrace) {
         newTrace.setTraceIndex(this.newTraceIndex());
         traces.add(newTrace);
+        stackTrace.push(newTrace);
     }
        private int newTraceIndex(){
         return traceIndex += 1;

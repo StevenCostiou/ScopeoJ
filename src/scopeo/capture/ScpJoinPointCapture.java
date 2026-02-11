@@ -12,11 +12,11 @@ public final class ScpJoinPointCapture {
         trace.setReceiver(new ScpObject(callPoint.getTarget()));
         trace.setSender(new ScpObject(callPoint.getThis()));
         trace.setMethod(new ScpMethod(callPoint));
-        ScpGlobalTraceRecord.getInstance().addTrace(trace);
+        ScpGlobalTraceRecord.getInstance().addCallTrace(trace);
         return trace;
     }
 
     public static void captureReturnValue(Object returnValue) {
-        ScpGlobalTraceRecord.getInstance().getLastTrace().setResult(new ScpObject(returnValue));
+        ScpGlobalTraceRecord.getInstance().terminateLastCallTraceWithReturnedValue(new ScpObject(returnValue));
     }
 }
