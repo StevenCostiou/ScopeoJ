@@ -22,7 +22,7 @@ public class ScpObject {
 
     public ScpObject(Object target) {
         try {
-            this.setClassName(target.getClass().getCanonicalName().toString());
+            this.setClassName(target.getClass().getCanonicalName());
             this.setObjectID(target.hashCode());
         } catch (NullPointerException e) {
             this.setClassName("null");
