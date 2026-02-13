@@ -3,10 +3,10 @@ package scopeo.model;
 import org.aspectj.lang.JoinPoint;
 
 public class ScpMethod {
-    public String definingClassName;
-    public String signature;
-    public String fileName;
-    public int line;
+    private String definingClassName;
+    private String signature;
+    private String fileName;
+    private int line;
 
     public String getDefiningClassName() {
         return definingClassName;

@@ -1,8 +1,8 @@
 package scopeo.model;
 
 public class ScpObject {
-    public String className;
-    public int objectID;
+    private String className;
+    private int objectID;
 
     public String getClassName() {
         return className;
