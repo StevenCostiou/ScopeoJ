@@ -4,6 +4,14 @@ public class ScpObject {
     private String className;
     private int objectID;
 
+    public String getClassName() {
+        return className;
+    }
+
+    public int getObjectID() {
+        return objectID;
+    }
+
     public ScpObject(Object target) {
         try {
             className = target.getClass().getCanonicalName();

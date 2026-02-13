@@ -5,6 +5,11 @@ import org.aspectj.lang.JoinPoint;
 public class ScpMethod {
     private String definingClassName;
     private String signature;
+
+    public String getDefiningClassName() {
+        return definingClassName;
+    }
+
     private String fileName;
     private int line;
 
