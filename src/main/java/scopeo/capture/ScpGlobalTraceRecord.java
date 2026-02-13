@@ -3,8 +3,11 @@ package scopeo.capture;
 import scopeo.model.ScpObject;
 import scopeo.model.ScpTrace;
 
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Stack;
+import tools.jackson.databind.ObjectMapper;
 
 public class ScpGlobalTraceRecord {
     private static ScpGlobalTraceRecord INSTANCE;
@@ -24,7 +27,8 @@ public class ScpGlobalTraceRecord {
     private int traceIndex = 0;
 
     public void terminateLastCallTraceWithReturnedValue(ScpObject returnValue) {
-        stackTrace.pop().setResult(returnValue);
+        ScpTrace trace = stackTrace.pop();
+        trace.setResult(returnValue);
     }
 
     public void addCallTrace(ScpTrace newTrace) {
@@ -32,10 +36,15 @@ public class ScpGlobalTraceRecord {
         traces.add(newTrace);
         stackTrace.push(newTrace);
     }
+
        private int newTraceIndex(){
         return traceIndex += 1;
     }
 
+    public void serializeTraces() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.writeValue(new File("traces/traces.json"), traces);
+    }
 
 
 }
