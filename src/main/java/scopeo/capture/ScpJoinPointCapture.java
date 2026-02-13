@@ -7,13 +7,12 @@ import scopeo.model.ScpTrace;
 
 public final class ScpJoinPointCapture {
 
-    public static ScpTrace captureCallBefore(JoinPoint callPoint) {
+    public static void captureCallBefore(JoinPoint callPoint) {
         ScpTrace trace = new ScpTrace();
         trace.setReceiver(new ScpObject(callPoint.getTarget()));
         trace.setSender(new ScpObject(callPoint.getThis()));
         trace.setMethod(new ScpMethod(callPoint));
         ScpGlobalTraceRecord.getInstance().addCallTrace(trace);
-        return trace;
     }
 
     public static void captureReturnValue(Object returnValue) {
