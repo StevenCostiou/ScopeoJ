@@ -30,6 +30,10 @@ public class ScpTrace {
         return arguments;
     }
 
+    public void setArguments(ArrayList<ScpObject> args) {
+        arguments = args;
+    }
+
     private ScpObject sender;
     private ScpObject result;
     private ScpMethod method;
@@ -50,4 +54,6 @@ public class ScpTrace {
     public void setMethod(ScpMethod method) {
         this.method = method;
     }
+
+
 }
