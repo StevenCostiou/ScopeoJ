@@ -1,11 +1,14 @@
 package scopeo.model;
 
+import java.util.ArrayList;
+
 public class ScpTrace {
-    public int traceIndex;
-    public ScpObject receiver;
-    public ScpObject sender;
-    public ScpObject result;
-    public ScpMethod method;
+    private int traceIndex;
+    private ScpObject receiver;
+    private ScpObject sender;
+    private ScpObject result;
+    private ScpMethod method;
+    private ArrayList<ScpObject> arguments = new ArrayList<>();
 
     public int getTraceIndex() {
         return traceIndex;

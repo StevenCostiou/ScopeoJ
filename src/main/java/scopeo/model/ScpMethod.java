@@ -5,7 +5,6 @@ import org.aspectj.lang.JoinPoint;
 public class ScpMethod {
     public String definingClassName;
     public String signature;
-    //public String sourceCode;
     public String fileName;
     public int line;
 
