@@ -5,13 +5,24 @@ import org.aspectj.lang.JoinPoint;
 public class ScpMethod {
     private String definingClassName;
     private String signature;
+    private String fileName;
+    private int line;
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public int getLine() {
+        return line;
+    }
 
     public String getDefiningClassName() {
         return definingClassName;
     }
-
-    private String fileName;
-    private int line;
 
     public ScpMethod(JoinPoint callPoint) {
         signature = callPoint.getSignature().toString();
